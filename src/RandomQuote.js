@@ -3,7 +3,7 @@ import './RandomQuote.css';
 import axios from 'axios';
 
 const headStyle = {
-    color: 'tomato',
+    color: 'darkorange',
 };
 const quoteStyle ={
     fontSize: '15px',
@@ -29,11 +29,24 @@ class RandomQuote extends Component{
     render(){
         return(
             <div className="QuoteBox">
-                <h1 style={headStyle}>Random Quote Machine</h1>
-                <h4 style={headStyle}>Project for FreeCodeCamp Certification by Hardik Mehta</h4>
-                <p style={quoteStyle}>{this.state.quote}</p>
-                <p style={quoteStyle}>{this.state.author}</p>
-                <button className="button" onClick={this.handleClick}>Get New Quote</button>
+                <div className="jumbotron">
+                    <h1 className="text-info">Random Quote Machine</h1>
+                </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                        </div>
+                        <div className="col-sm-4 card bg-info mx-auto">
+                            <div className="card-body">
+                                <p className="font-weight-bold">{this.state.quote}</p>
+                                <p className="text-warning font-weight-bold">{this.state.author}</p>
+                                <button className="btn btn-primary" onClick={this.handleClick}>Get New Quote</button>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
