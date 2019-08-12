@@ -22,6 +22,10 @@ class RandomQuote extends Component{
             author: ''
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleTweet = this.handleTweet.bind(this);
+    }
+    handleTweet(){
+        
     }
     handleClick(){
         axios.get("https://api.quotable.io/random").then(response => this.setState({quote: response.data.content, author: response.data.author}))
@@ -41,6 +45,7 @@ class RandomQuote extends Component{
                                 <p className="font-weight-bold">{this.state.quote}</p>
                                 <p className="text-warning font-weight-bold">{this.state.author}</p>
                                 <button className="btn btn-primary" onClick={this.handleClick}>Get New Quote</button>
+                                <button className="btn btn-primary" onClick={this.handleTweet}>Tweet</button>
                             </div>
                         </div>
                         <div className="col-sm-4">
