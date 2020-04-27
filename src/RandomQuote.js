@@ -6,7 +6,7 @@ class TweetButton extends Component{
     render(){
         return(
             <div>
-            <button className="btn btn-light"><a className="text-success" href="https://www.twitter.com/intent/tweet">Tweet here!</a></button>
+            <button className="btn btn-light"><a className="text-success" id="tweet-quote" href="https://www.twitter.com/intent/tweet">Tweet here!</a></button>
             </div>
         );
     }
@@ -17,8 +17,8 @@ class ParaText extends Component{
         const author = this.props.author;
         return(
             <div>
-                <p className="font-weight-bold">{quote}</p>
-                <p className="text-warning font-weight-bold">{author}</p>
+                <p className="font-weight-bold" id="text">{quote}</p>
+                <p className="text-warning font-weight-bold" id="author">{author}</p>
             </div>
         );
     }
@@ -36,6 +36,10 @@ class RandomQuote extends Component{
         }
         this.handleClick = this.handleClick.bind(this);
     }
+    componentDidMount()
+    {
+        this.handleClick();
+    }
     handleClick(){
         axios.get("https://api.quotable.io/random").then(response => this.setState({quote: response.data.content, author: response.data.author}))
     }
@@ -49,10 +53,10 @@ class RandomQuote extends Component{
                     <div className="row">
                         <div className="col-sm-4">
                         </div>
-                        <div className="col-sm-4 card bg-info mx-auto">
+                        <div className="col-sm-4 card bg-info mx-auto" id="quote-box">
                             <div className="card-body">
                                 <ParaText quote={this.state.quote} author={this.state.author} />
-                                <button className="btn btn-primary" onClick={this.handleClick}>Get New Quote</button>
+                                <button className="btn btn-primary" id="new-quote" onClick={this.handleClick}>Get New Quote</button>
                                 <br />
                                 <br />
                                 <TweetButton />
